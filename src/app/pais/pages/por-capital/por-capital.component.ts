@@ -13,16 +13,19 @@ export class PorCapitalComponent {
   termino: string = 'Hola Mundo'
   hayError: boolean = false;
   paises: Country[] = [];
+  public isLoading: boolean = false;
 
   constructor( private paisService: PaisService ) { }
 
   buscar(termino: string) {
     this.hayError = false;
     this.termino = termino;
+    this.isLoading = true;
     
     this.paisService.buscarCapital( termino )
       .subscribe(  (paises) => {
         this.paises = paises
+        this.isLoading = false;
       }, (err) => {
         this.hayError = true;
         this.paises = [];

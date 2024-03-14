@@ -17,9 +17,12 @@
     No se encontró nada con el término {{ termino }}
 </div>
 
+<shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
 <div *ngIf="paises.length > 0" class="row">
     <div class="col">
-        
+        <hr>
+
         <app-pais-tabla [paises]="paises"></app-pais-tabla>
 
     </div>
